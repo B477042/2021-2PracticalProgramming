@@ -17,12 +17,12 @@ public:
 
 	}
 	//출력용 함수
-	friend ofstream& operator << (ofstream& out,const HistoryData& Other)
+	void Log()
 	{
-		cout << "Name : " << Other.name << "\t전체 " << Other.num << "번째 입장\n";
-		return out;
+		cout << "Name : " << name << "\t전체 " << num << "번째 입장\n";
+		
 	}
-
+	
 private:
 	string name;
 	unsigned int num;
@@ -47,11 +47,11 @@ public:
 	@ NewName : 새로운 방문자의 이름
 	@ NewEntity : 새로운 방문자 객체 정보
 	*/
-	void Join( string& NewName,  Client* NewEntity);
+	bool Join( string& NewName,  Client* NewEntity);
 	/*
 	* 해당 이름의 방문자가 떠납니다.
 	*/
-	void Leave(const string& Name);
+	bool Leave(const string& Name);
 	/*
 	* 프로그램을 종료할 때 호출
 	*/

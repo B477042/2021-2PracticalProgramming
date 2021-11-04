@@ -15,10 +15,10 @@ public:
 		//cout << "Log : " <<storeName << " 영업 종료\n";
 	}
 
-	//이용자를 받아들일 때 호출
-	void AcceptClinet(Client* NewClient);
-	//이용자가 떠날 때 호출
-	void LeaveClinet(const string& Name);
+	//이용자를 받아들일 때 호출. 실패하면 false
+	bool AcceptClinet(Client* NewClient);
+	//이용자가 떠날 때 호출. 실패하면 false
+	bool LeaveClinet(const string& Name);
 
 	string GetName(){return storeName;}
 

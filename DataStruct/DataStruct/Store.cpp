@@ -2,19 +2,20 @@
 #include "AccessRecord.h"
 
 
-void Store::AcceptClinet(Client* NewClient)
+bool Store::AcceptClinet(Client* NewClient)
 {
 	if (!NewClient)
 	{
 		cout << "Error : 잘못된 방문자\n";
-			return;
+			return false;
 	}
 	 string name = NewClient->GetName();
-	 AccessRecord::Instance()->Join(name, NewClient);
-
+	return AccessRecord::Instance()->Join(name, NewClient);
+	 
 }
 
-void Store::LeaveClinet(const string& Name)
+bool  Store::LeaveClinet(const string& Name)
 {
-	AccessRecord::Instance()->Leave(Name);
+	return AccessRecord::Instance()->Leave(Name);
+	
 }

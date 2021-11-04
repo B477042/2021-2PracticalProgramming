@@ -12,16 +12,15 @@ AccessRecord* AccessRecord::instance = nullptr;
 
 void AccessRecord::PrintLog()
 {
-    if (!history.empty())
+    if (history.empty())
     {
         cout << "방문 기록이 없습니다.\n";
         return;
     }
     
-    auto it = history.begin();
-    while (it != history.end())
+    for (auto it : history)
     {
-        cout << *it;
+        it->Log();
     }
 
 
@@ -30,26 +29,29 @@ void AccessRecord::PrintLog()
 void AccessRecord::PrintCurrentState()
 {
     cout<<"현재 가게에 있는 사람들입니다.\n";
+    int i = 1;
     for(auto it:currentVisitor)
     {
-        cout<<*it.first<<"\n";
+        cout<<i<<" : "<<it.first << "\n";
+        ++i;
     }
 }
 
 
-void AccessRecord::Join( string& NewName, Client* NewEntity)
+bool AccessRecord::Join( string& NewName, Client* NewEntity)
 {
+    
     if (!NewEntity)
     {
         cout << "Warning : 새로운 방문자가 없습니다.\n";
-        return;
+        return false;
 
     }
     auto find = currentVisitor.find(NewName);
     if (find != currentVisitor.end())
     {
         cout << "Warning : 지금 방문 중인 사람입니다." << endl;
-
+        return false;
     }
 
     currentVisitor.insert( pair<string,Client*>( NewName,NewEntity ));
@@ -57,24 +59,25 @@ void AccessRecord::Join( string& NewName, Client* NewEntity)
     ++visitorCounter;
     HistoryData* NewData = new HistoryData(NewName, visitorCounter);
     history.push_back(NewData);
+    return true;
 }
 
 
 
 
 
-void AccessRecord::Leave(const string& Name)
+bool AccessRecord::Leave(const string& Name)
 {
     auto find = currentVisitor.find(Name);
-    if (find != currentVisitor.end())
+    if (find == currentVisitor.end())
     {
         cout << "Warning : 없는 사람입니다." << endl;
-        return;
+        return false;
     }
 
     currentVisitor.erase(find);
     cout << "Log : " << Name << " 이 떠났습니다.\n";
-
+    return true;
 }
 
 void AccessRecord::Exit()
