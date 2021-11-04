@@ -4,7 +4,7 @@
 #include<list>
 #include<string>
 #include<memory>
-#include"Entity.h"
+#include"Client.h"
 
 using namespace std;
 
@@ -35,7 +35,7 @@ private:
 	AccessRecord() {}
 	static AccessRecord* instance;
 public:
-	const static AccessRecord* Instance();
+	 static AccessRecord* const Instance();
 
 	//방문 기록들을 출력합니다.
 	void PrintLog();
@@ -44,7 +44,7 @@ public:
 	@ NewName : 새로운 방문자의 이름
 	@ NewEntity : 새로운 방문자 객체 정보
 	*/
-	void Join( string& NewName,  Entity* NewEntity);
+	void Join( string& NewName,  Client* NewEntity);
 	/*
 	* 해당 이름의 방문자가 떠납니다.
 	*/
@@ -56,8 +56,12 @@ public:
 
 
 private:
-	map<string, Entity*> CurrentVisitor;
-	list<HistoryData*> History;
-	unsigned int VisitorCounter;
+
+	//지금 가게에 방문한 방문자들을 저장
+	map<string, Client*> currentVisitor;
+	//가게에 방문한 사람들의 기록을 저장
+	list<HistoryData*> history;
+	//오늘 총 방문자 수
+	unsigned int visitorCounter=0;
 };
 

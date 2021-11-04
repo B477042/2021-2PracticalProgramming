@@ -3,11 +3,11 @@
 
 using namespace std;
 
-class Entity
+class Client
 {
 public:
-	Entity(const string& Name){}
-	string GetName()const { return name; }
+	Client(const string& Name){}
+	string GetName() { return name; }
 private:
 	string name;
 };

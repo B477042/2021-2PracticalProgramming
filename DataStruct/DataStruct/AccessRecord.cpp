@@ -1,6 +1,6 @@
 #include "AccessRecord.h"
 AccessRecord* AccessRecord::instance = nullptr;
-const AccessRecord* AccessRecord::Instance()
+ AccessRecord* const AccessRecord::Instance()
 {
     if (!instance)
     {
@@ -12,14 +12,14 @@ const AccessRecord* AccessRecord::Instance()
 
 void AccessRecord::PrintLog()
 {
-    if (!History.empty())
+    if (!history.empty())
     {
         cout << "방문 기록이 없습니다.\n";
         return;
     }
     
-    auto it = History.begin();
-    while (it != History.end())
+    auto it = history.begin();
+    while (it != history.end())
     {
         cout << *it;
     }
@@ -27,7 +27,7 @@ void AccessRecord::PrintLog()
 
 }
 
-void AccessRecord::Join( string& NewName, Entity* NewEntity)
+void AccessRecord::Join( string& NewName, Client* NewEntity)
 {
     if (!NewEntity)
     {
@@ -35,29 +35,34 @@ void AccessRecord::Join( string& NewName, Entity* NewEntity)
         return;
 
     }
-    auto find = CurrentVisitor.find(NewName);
-    if (find != CurrentVisitor.end())
+    auto find = currentVisitor.find(NewName);
+    if (find != currentVisitor.end())
     {
         cout << "Warning : 지금 방문 중인 사람입니다." << endl;
 
     }
 
-    CurrentVisitor.insert( pair<string,Entity*>( NewName,NewEntity ));
+    currentVisitor.insert( pair<string,Client*>( NewName,NewEntity ));
 
-
-
+    ++visitorCounter;
+    HistoryData* NewData = new HistoryData(NewName, visitorCounter);
+    history.push_back(NewData);
 }
+
+
+
+
 
 void AccessRecord::Leave(const string& Name)
 {
-    auto find = CurrentVisitor.find(Name);
-    if (find != CurrentVisitor.end())
+    auto find = currentVisitor.find(Name);
+    if (find != currentVisitor.end())
     {
         cout << "Warning : 없는 사람입니다." << endl;
         return;
     }
 
-    CurrentVisitor.erase(find);
+    currentVisitor.erase(find);
     cout << "Log : " << Name << " 이 떠났습니다.\n";
 
 }
@@ -65,11 +70,13 @@ void AccessRecord::Leave(const string& Name)
 void AccessRecord::Exit()
 {
    
-    CurrentVisitor.clear();
-    for (auto it : History)
+    currentVisitor.clear();
+    for (auto it : history)
     {
         delete it;
     }
+   
+
 
     cout << "문 닫습니다.\n";
 }
