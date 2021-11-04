@@ -16,6 +16,9 @@ public:
 	void Start();
 	void End();
 private:
-	Store* Store;
+	void run();
+
+	Store* store;
+	char input;
 };
 

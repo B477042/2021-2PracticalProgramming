@@ -20,7 +20,7 @@ public:
 	//이용자가 떠날 때 호출
 	void LeaveClinet(const string& Name);
 
-
+	string GetName(){return storeName;}
 
 private:
 	//가게 이름

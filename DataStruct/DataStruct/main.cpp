@@ -1,4 +1,5 @@
 #include<iostream>
+#include"World.h"
 using namespace std;
 
 /*
@@ -8,6 +9,9 @@ using namespace std;
 
 int main()
 {
-	cout << "hi";
+	World world;
+	world.Start();
+
+	
 	return 0;
 }
