@@ -27,6 +27,16 @@ void AccessRecord::PrintLog()
 
 }
 
+void AccessRecord::PrintCurrentState()
+{
+    cout<<"현재 가게에 있는 사람들입니다.\n";
+    for(auto it:currentVisitor)
+    {
+        cout<<*it.first<<"\n";
+    }
+}
+
+
 void AccessRecord::Join( string& NewName, Client* NewEntity)
 {
     if (!NewEntity)

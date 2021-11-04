@@ -54,6 +54,7 @@ void World::run()
 
         break;
             case '2':
+                AccessRecord::Instance()->PrintCurrentState();
         break;
            case '3':
               
@@ -66,7 +67,6 @@ void World::run()
         case '4':
             cout << "방문자 이름 : ";
             getline(cin, visitor, '\n');
-
             leaveClinet(visitor);
 
            break;

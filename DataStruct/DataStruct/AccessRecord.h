@@ -39,6 +39,9 @@ public:
 
 	//방문 기록들을 출력합니다.
 	void PrintLog();
+	//현재 있는 사람들을 출력합니다.
+	void PrintCurrentState();
+
 	/*
 	새로운 방문자를 기록합니다.
 	@ NewName : 새로운 방문자의 이름
