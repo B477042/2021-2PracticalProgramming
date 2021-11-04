@@ -45,21 +45,37 @@ void World::run()
         cout<<"5. 종료\n";
         cout<<"Input : ";
         cin>>input;
-
+        //방문자 이름
+        string visitor;
         switch(input)
         {
             case '1':
+                AccessRecord::Instance()->PrintLog();
+
         break;
-              case '2':
+            case '2':
         break;
            case '3':
+              
+               cout << "방문자 이름 : ";
+               getline(cin, visitor, '\n');
+               addNewClinet(visitor);
+
             break;
+
         case '4':
+            cout << "방문자 이름 : ";
+            getline(cin, visitor, '\n');
+
+            leaveClinet(visitor);
+
            break;
+
         case '5':
         bPower=false;
         continue;
-           break;
+        break;
+
            default:
              cout<<"다시 입력해주세요 : ";
             cin>>input;
