@@ -11,7 +11,8 @@ int main()
 {
 	World world;
 	world.Start();
-
+	world.End();
 	
+	cout << "Á¾·á" << endl;
 	return 0;
 }

@@ -12,7 +12,7 @@ public:
 	}
 	~Store()
 	{
-		cout << "Log : " <<storeName << " 영업 종료\n";
+		//cout << "Log : " <<storeName << " 영업 종료\n";
 	}
 
 	//이용자를 받아들일 때 호출

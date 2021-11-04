@@ -76,7 +76,7 @@ void AccessRecord::Exit()
         delete it;
     }
    
-
+    
 
     cout << "¹® ´Ý½À´Ï´Ù.\n";
 }

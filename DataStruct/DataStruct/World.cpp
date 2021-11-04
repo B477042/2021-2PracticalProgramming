@@ -1,5 +1,5 @@
 #include "World.h"
-
+#include "AccessRecord.h"
 
 World::World()
 {
@@ -16,7 +16,7 @@ void World::Start()
 
     string StoreName;
     cout<<"## 가게 이름 : ";
-    cin>>StoreName;
+    getline(cin, StoreName,'\n');
     store=new Store(StoreName);
 
     run();
@@ -25,7 +25,9 @@ void World::Start()
 
 void World::End()
 {
+    AccessRecord::Instance()->Exit();
     delete store;
+    delete AccessRecord::Instance();
 }
 
 void World::run()
@@ -33,8 +35,8 @@ void World::run()
     bool bPower=true;
     while(bPower)
     {
-        cout<<"==============================\n"
-        cout<<"|    "<<store->GetName()<<" 정상영업 합니다. |\n";
+        cout << "==============================\n";
+        cout<<"    "<<store->GetName()<<" 정상영업 합니다. \n";
         cout<<"==============================\n";
         cout<<"1. 전체 방문자 기록 확인\n";
         cout<<"2. 현재 방문자 확인\n";
