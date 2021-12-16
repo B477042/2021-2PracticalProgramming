@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AWriter.h">
+    <ClInclude Include="AInput.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="APrinter.h">
@@ -27,9 +27,15 @@
     <ClInclude Include="ARecorder.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Base.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="AProgram.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AWriter.cpp">
+    <ClCompile Include="AInput.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="APrinter.cpp">
@@ -39,6 +45,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="ARecorder.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="AProgram.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
