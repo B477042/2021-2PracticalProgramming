@@ -139,19 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="APrinter.h" />
+    <ClInclude Include="AConsole.h" />
+    <ClInclude Include="ADataManager.h" />
     <ClInclude Include="AProgram.h" />
-    <ClInclude Include="AReader.h" />
-    <ClInclude Include="ARecorder.h" />
-    <ClInclude Include="AInput.h" />
     <ClInclude Include="Base.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="APrinter.cpp" />
+    <ClCompile Include="AConsole.cpp" />
+    <ClCompile Include="ADataManager.cpp" />
     <ClCompile Include="AProgram.cpp" />
-    <ClCompile Include="AReader.cpp" />
-    <ClCompile Include="ARecorder.cpp" />
-    <ClCompile Include="AInput.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
