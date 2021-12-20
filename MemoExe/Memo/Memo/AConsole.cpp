@@ -63,10 +63,11 @@ void AConsole::hello()
 void AConsole::newMemo()
 {
 	cout << "\n===========================\n새 메모 작성\n";
-	cout << "메모는 자동저장 됩니다.\n";
-	cout << "단축키 Ctrl + Z : 이전으로, Ctrl + Y : 다음으로, ESC : 타이틀로";
-
+	cout << "임시 메모는 자동저장 됩니다.\n";
+	cout << "단축키 Ctrl + Z : 이전으로, Ctrl + Y : 다음으로, ESC : 타이틀로, Ctrl + S : 다른 이름으로 저장";
 	string FileName = "temp";
+	cout << "현재 파일이름 " << FileName << endl;
+	
 	writting(FileName);
 }
 
@@ -76,7 +77,7 @@ void AConsole::writting(const string& FileName)
 	// 텍스트 입력 로직
 	char input;
 	bool bLoop = true;
-	cout << "\n";
+	
 	while (bLoop)
 	{
 		if (_kbhit())
@@ -105,13 +106,34 @@ void AConsole::writting(const string& FileName)
 			case 27://Esc
 				bLoop = false;
 				break;
-
+			case -32://arrow
+				arrowAction(_getch());
+				break;
 			default:
-				cout <<input;
+				cout <<(int)input<<endl;
 				break;
 
 			}
 		}
+	}
+}
+
+void AConsole::arrowAction(const int& num)
+{
+	switch (num)
+	{
+	case 72://up
+		//cout << " up ";
+		break;
+	case 80://down
+		//cout << " down ";
+		break;
+	case 75://left
+		//cout << " left ";
+		break;
+	case 77://right
+		//cout << " right ";
+		break;
 	}
 }
 

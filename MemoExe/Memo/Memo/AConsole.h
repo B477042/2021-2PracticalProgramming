@@ -1,6 +1,18 @@
 #pragma once
 #include"Base.h"
+#include <stack>
 using namespace std;
+
+enum EOrder
+{
+	//작성할 경우
+	Write=0,
+	Delete
+};
+typedef struct FOrderLog
+{
+
+};
 
 
 class AConsole
@@ -23,8 +35,12 @@ private:
 	void newMemo();
 	//메모를 적을 때 호출
 	void writting(const string& FileName);
-	//
+	//방향키 조작
+	void arrowAction(const int& num);
+
 	void loadMemo();
 	class AProgram* Program;
+
+
 };
 
