@@ -66,7 +66,53 @@ void AConsole::newMemo()
 	cout << "메모는 자동저장 됩니다.\n";
 	cout << "단축키 Ctrl + Z : 이전으로, Ctrl + Y : 다음으로, ESC : 타이틀로";
 
+	string FileName = "temp";
+	writting(FileName);
+}
 
+void AConsole::writting(const string& FileName)
+{
+
+	// 텍스트 입력 로직
+	char input;
+	bool bLoop = true;
+	cout << "\n";
+	while (bLoop)
+	{
+		if (_kbhit())
+		{
+			input = _getch();
+			switch (input)
+			{
+				/*
+				* 13 : enter
+				* 26 : ctrl+z
+				* 25 : ctrl+y
+				* 19 : ctrl+s
+				*/
+			case 13://Enter
+				cout << "\n";
+				break;
+			case 25://Ctrl + Z
+				cout << "되돌리기\n";
+				break;
+			case 26://Ctrl + y
+				cout << "앞으로\n";
+				break;
+			case 8://Backspace
+				cout << "\b \b";
+				break;
+			case 27://Esc
+				bLoop = false;
+				break;
+
+			default:
+				cout <<input;
+				break;
+
+			}
+		}
+	}
 }
 
 void AConsole::loadMemo()

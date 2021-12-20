@@ -21,6 +21,9 @@ private:
 	void hello();
 	//New Memo
 	void newMemo();
+	//메모를 적을 때 호출
+	void writting(const string& FileName);
+	//
 	void loadMemo();
 	class AProgram* Program;
 };
