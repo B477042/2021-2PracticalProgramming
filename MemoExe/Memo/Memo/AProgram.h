@@ -76,8 +76,7 @@ private:
 	// 클래스 객체
 	AConsole* Console;
 
-	//저장된 파일 이름들 테이블, 있다면 True
-	unordered_map<string,bool> FileNameTable;
+
 
 	//===============================================
 	//쓰레드 관련
